@@ -14,11 +14,14 @@ catch (Exception $e)
 // Notre requete à la base de donnée
 
 
-$tasks_todo = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` = ''");
-$tasks_done = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` < `task_end_timestamp`");
-$tasks_late = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` > `task_end_timestamp`");
 
 
 //$tasks_donelate = $bdd->query('SELECT * FROM task WHERE task_end_timestamp <= task_ended_on_timestamp');
 
-?>
+//if( isset( $_POST['getAllTask'] ) ){ $q = "SELECT * FROM task"; $q = $database->query($q); $q->execute(); 
+
+?> 
+
+
+
+

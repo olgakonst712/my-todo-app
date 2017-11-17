@@ -19,7 +19,7 @@
 	<body>
 
 <div class="main">
-   
+   <form method="post"> 
     <div class="main-header">
         <h1>My TodoList</h1>
         <div id="add" onclick="change();">
@@ -53,11 +53,12 @@
                 </footer>
             </li>
         </ul> 
-       
+       <?php }; ?>
         <div class="ligne"><hr></div> 
         <!--  -->
        
         <!--  -->
+         <?php while ($donnees = $tasks_todo->fetch(PDO::FETCH_ASSOC)) { ?>
          <ul class="list" id="todo-list">
             <li class="list-item-nodone">
                 
@@ -81,12 +82,14 @@
                 </footer> 
             </li>
         </ul> 
+        <?php }; ?>
         <div class="ligne"><hr></div> 
     
         
 
         
         <!--  -->
+        <?php while ($donnees = $tasks_todo->fetch(PDO::FETCH_ASSOC)) { ?>
           <ul class="list" id="todo-list">
             <li class="list-item-donelate">
                   <header class="item-header">
@@ -110,7 +113,7 @@
                     
             </li>
         </ul>
-          <?php }; ?>
+        <?php }; ?>  
         <div class="ligne"><hr></div>
    
  
@@ -120,18 +123,18 @@
             <h2>Show:</h2>
 
             <ul class="ul-footer">
-                <li class="li-footer"><a href="#">All Task</a></li>
-                <li class="li-footer"><a href="#">To Do Task</a></li>
-                <li class="li-footer"><a href="#">Done Task</a></li>
+                <li class="li-footer"><input type="submit" name="getTask" value="All task"></li>
+                <li class="li-footer"><input type="submit" name="getTask" value="To do task"></li>
+                <li class="li-footer"><input type="submit" name="getTask" value="Done task"></li>
 
             </ul>
         </div>
     </div>
   
  </div>
+ </form>
 
-
-
+<form method="post"> 
 <div id="next_container">
     <div id="main-next_container">
          <div class="clear"><a href="#">CLEAR</a></div>
@@ -179,13 +182,13 @@
             
 
             <ul class="ul-footer">
-                <li class="li-footer"><a href="#">Add task and create new one</a></li>
-                <li class="li-footer"><a href="#">Add task</a></li>
+                <li class="li-footer"><input type="submit" name="getTask" value="Add task and create new one"> </li>
+                <li class="li-footer"><input type="submit" name="getTask" value="Add task"></li>
                 
         </div>
     </div>
    </div> 
-   
+   </form>
 </div>
 
 
