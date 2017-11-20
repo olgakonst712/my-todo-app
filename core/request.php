@@ -2,52 +2,26 @@
 <?php include 'connection.php'?>
 
 <?php
-$tasks_todo = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` = ''");
-$tasks_done = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` < `task_end_timestamp`");
-$tasks_late = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` > `task_end_timestamp`");
+$tasks = $bdd->query("SELECT * FROM task ");
+//$tasks_done = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` < `task_end_timestamp`");
+//$tasks_late = $bdd->query("SELECT * FROM task WHERE `task_ended_on_timestamp` > `task_end_timestamp`");
 ?>
 <?php
-if ( isset($_POST['insertTask'])){
+if( isset( $_POST['insertTask'] ) ){
+if( isset( $_POST['task_title'] ) && isset( $_POST['task_description'] ) && isset( $_POST['task_start_timestamp'] ) && isset( $_POST['task_end_timestamp'] ) ){
+$title = $_POST['task_title'];
+$description = $_POST['task_description'];
+$startt = $_POST['task_start_timestamp'];
+$endt = $_POST['task_end_timestamp'];
 
-        $task = $_POST['insertTask'];
-
-        $title = "Mon titre";
-        $description = "Ma description";
-        $startat = "Ma start";
-        $endat = $startat + (24*60*60*7);
-
-        $q = "INSERT INTO task (task_title,task_description,task_start,task_end) VALUES (:title, :description, :startat, :endat)";
-
-        $q = $db->prepare();
-
-        $q->binParam(":title", $title, PDO::PARAM_STR);
-        $q->binParam(":description", $description, PDO::PARAM_STR);
-        $q->binParam(":startat", $startat, PDO::PARAM_INT);
-        $q->binParam(":endat", $endat, PDO::PARAM_INT);
-
-
-
-        $q-> execute();
-
-        if ($q->_rowcount() > 0){
-
-                echo true;
-
-        }else {
-
-                echo false;
-        }
-
-
-    }
-if(isset($_POST['updateTask'])){
-
-$task = $_POST;
+  $q = ('INSERT INTO task (task_title, task_description, task_start_timestamp, task_end_timestamp) VALUES (:title, :description, :startt, :endt)');
+  $stm = $bdd->prepare($q);
+  $stm->bindParam(':title', $title, PDO::PARAM_STR);
+  $stm->bindParam(':description', $description, PDO::PARAM_STR);
+  $stm->bindParam(':startt', $startt, PDO::PARAM_INT);
+  $stm->bindParam(':endt', $endt, PDO::PARAM_INT);
+  $stm->execute();
 }
-
-if(isset($_POST['deleteTask'])){
-
-$task = $_POST;
 }
 
 ?>

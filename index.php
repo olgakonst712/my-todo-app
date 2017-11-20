@@ -30,7 +30,7 @@
      
 
     <div id="main-container">
-       <?php while ($donnees = $tasks_todo->fetch(PDO::FETCH_ASSOC)) { ?>
+       <?php while ($donnees = $tasks->fetch(PDO::FETCH_ASSOC)) { ?>
         <ul class="list" id="todo-list">
             <li class="list-item-done">
                 <header class="item-header">
@@ -58,7 +58,7 @@
         <!--  -->
        
         <!--  -->
-         <?php while ($donnees = $tasks_todo->fetch(PDO::FETCH_ASSOC)) { ?>
+         <?php while ($donnees = $tasks->fetch(PDO::FETCH_ASSOC)) { ?>
          <ul class="list" id="todo-list">
             <li class="list-item-nodone">
                 
@@ -89,7 +89,7 @@
 
         
         <!--  -->
-        <?php while ($donnees = $tasks_todo->fetch(PDO::FETCH_ASSOC)) { ?>
+        <?php while ($donnees = $tasks->fetch(PDO::FETCH_ASSOC)) { ?>
           <ul class="list" id="todo-list">
             <li class="list-item-donelate">
                   <header class="item-header">
@@ -139,10 +139,10 @@
     <div id="main-next_container">
          <div class="clear"><a href="#">CLEAR</a></div>
          <h2 class="item-title_next_container">TITLE</h2>
-         <input type=textarea" class="title"></input>
+         <input type=textarea" class="title" id="task_title" name="task_title"></input>
          <div class="ligne"><hr></div> 
          <h2 class="item-title_next_container">DESCRIPTION</h2>
-         <input type=textarea" class="descrip"></input>
+         <input type=textarea" class="descrip" id="task_description" name="task_description"></input>
          <div class="ligne"><hr></div> 
          <h2 class="item-title_next_container">START ATT:</h2>
         
@@ -153,7 +153,7 @@
             </tr>
          </table>
         
-         <input type="text" name="date1" onclick="ds_sh(this);" />
+         <input type="text" name="task_start_timestamp" onclick="ds_sh(this);" />
          
         
          <div class="ligne"><hr></div> 
@@ -168,7 +168,7 @@
             </tr>
         </table>
        
-        <input type="text" name="date1" onclick="ds_sh(this);" />
+        <input type="text" name="task_end_timestamp" onclick="ds_sh(this);" />
         
         
         <div class="ligne"><hr></div> 
@@ -182,8 +182,8 @@
             
 
             <ul class="ul-footer">
-                <li class="li-footer"><input type="submit" name="getTask" value="Add task and create new one"> </li>
-                <li class="li-footer"><input type="submit" name="getTask" value="Add task"></li>
+                <li class="li-footer"><input type="submit" name="insertTask" id="insertTask" value="Add task and create new one"> </li>
+                <li class="li-footer"><input type="submit" name="insertTask" id="insertTask" value="Add task"></li>
                 
         </div>
     </div>
